@@ -1,0 +1,28 @@
+#!/bin/sh
+
+alias dotfiles="/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME"
+alias dot="/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias l="ls -hNl --color=auto --group-directories-first"
+alias ll="ls -hN -all --color=auto --group-directories-first"
+alias ..="cd .."
+alias ...="cd ../.."
+alias pi="comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq)"
+alias po="comm -23 <(pacman -Qdtq | sort) <(pacman -Qqg base -g base-devel | sort | uniq)"
+alias weechat="weechat -d $HOME/.config/weechat"
+alias p="qpdfview"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias disable_webcam="sudo modprobe -r uvcvideo"
+alias enable_webcam="sudo modprobe uvcvideo"
+
+#shortcuts
+alias cr="cd $HOME/repos"
+alias crd="cd $HOME/repos/djk-avenwedde"
+alias crp="cd $HOME/repos/private"
+alias crc="cd $HOME/repos/codepit"
+
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim if available
+
+# fuzzy finder functions
+fs() { find $SCRIPTS ~/.config/ -type f | fzf | xargs -r $EDITOR ;}
+ff() { fzf | xargs -r -I % $EDITOR % ;}

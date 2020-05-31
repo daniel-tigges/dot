@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+
+#dunst &
+#insync start &
+#set-background &
+#entr_wallswitch &
+#entr_greeterswitch &
+#picom -b -c -C --config ~/.config/compton/compton.conf &
