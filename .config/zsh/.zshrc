@@ -13,10 +13,6 @@ setopt HIST_FIND_NO_DUPS # ignore dups when searching
 setopt HIST_REDUCE_BLANKS # remove blanks from history
 bindkey '^R' history-incremental-pattern-search-backward # bind CTRL+R searching through history
 
-
-# Prompt Settings
-
-
 # Command Completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select  #change to menu driven autocomplete
@@ -41,3 +37,10 @@ setopt AUTO_CD # enable automatic cd into a directory
 setopt CORRECT # enable automatic correction
 setopt CORRECT_ALL # enable automatic correction
 stty stop undef # disable CTRL+S to freeze terminal
+
+# Prompt Settings
+
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+
+autoload -U promptinit; promptinit
+prompt spaceship
