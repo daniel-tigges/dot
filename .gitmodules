@@ -1,3 +1,6 @@
 [submodule "~/.local/share/powerlevel10k"]
 	path = ~/.local/share/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "/home/daniel/.local/share/fast-syntax-highlighting"]
+	path = /home/daniel/.local/share/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting

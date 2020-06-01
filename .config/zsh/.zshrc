@@ -45,3 +45,6 @@ stty stop undef # disable CTRL+S to freeze terminal
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# Enable fast syntax highlighting
+[ -f ~/.local/share/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ] && source ~/.local/share/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
