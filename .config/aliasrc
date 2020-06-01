@@ -15,12 +15,6 @@ alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias disable_webcam="sudo modprobe -r uvcvideo"
 alias enable_webcam="sudo modprobe uvcvideo"
 
-#shortcuts
-alias cr="cd $HOME/repos"
-alias crd="cd $HOME/repos/djk-avenwedde"
-alias crp="cd $HOME/repos/private"
-alias crc="cd $HOME/repos/codepit"
-
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim if available
 
 # fuzzy finder functions
