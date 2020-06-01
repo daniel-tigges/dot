@@ -7,6 +7,7 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'tpope/vim-fugitive' " git plugin
 Plug 'tpope/vim-surround' " cs:- change surround from : to -
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary' " gcc to comment out
