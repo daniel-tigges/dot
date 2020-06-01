@@ -16,3 +16,6 @@ if [ $? = 0 ]; then
 fi;
 config checkout
 config config status.showUntrackedFiles no
+
+# create directories
+mkdir -p $HOME/.cache/zsh # to store history file
