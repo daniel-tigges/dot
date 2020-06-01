@@ -1,6 +1,10 @@
 #!/bin/sh
 
+# Parameters
 dot-directory="$HOME/.dotfiles/"
+
+# Install dependent packages
+yay -Sy --needed --noconfirm - < $HOME/.local/packages
 
 git clone --bare https://github.org/daniel-tigges/dot.git $dot-directory
 function config {
@@ -17,5 +21,7 @@ fi;
 config checkout
 config config status.showUntrackedFiles no
 
-# create directories
+# create directories and files
 mkdir -p $HOME/.cache/zsh # to store history file
+mkdir -o $HOME/.config/wget # for wget configuration
+touch $HOME/.config/wget/wgetrc # for wget configuration 
