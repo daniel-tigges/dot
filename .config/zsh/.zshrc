@@ -11,10 +11,10 @@ setopt HIST_EXPIRE_DUPS_FIRST # duplicates are removed first
 setopt HIST_IGNORE_DUPS # do not store duplications
 setopt HIST_FIND_NO_DUPS # ignore dups when searching
 setopt HIST_REDUCE_BLANKS # remove blanks from history
+bindkey '^R' history-incremental-pattern-search-backward # bind CTRL+R searching through history
 
 
 # Prompt Settings
-
 
 
 # Command Completion
@@ -22,11 +22,19 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select  #change to menu driven autocomplete
 zstyle ':completion:*' list-suffixes # enable partial completion
 zstyle ':completion:*' expand prefix suffix # set partial completion rules
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # case-insentivity
 setopt COMPLETE_ALIASES # activate autocomplete for command line switches
+_comp_options+=(globdots)		# Include hidden files.
 
-
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
 
 # Misc
+export TERM="st-256color"
 autoload -U colors && colors # enable colors
 setopt AUTO_CD # enable automatic cd into a directory
 setopt CORRECT # enable automatic correction
