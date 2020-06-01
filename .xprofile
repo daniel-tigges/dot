@@ -2,6 +2,10 @@
 
 # This file runs when a DM logs you into a graphical session.
 
+# Map capslock to esc and to CTRL on long presses
+setxkbmap -option caps:ctrl_modifier
+xcape -e 'Caps_Lock=Escape'
+
 # Speed up rate for long key presses
 xset r rate 300 50 &
 
