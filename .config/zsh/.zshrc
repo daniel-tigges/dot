@@ -41,6 +41,9 @@ stty stop undef # disable CTRL+S to freeze terminal
 # Prompt Settings
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_CHAR_SYMBOL=❯
+SPACESHIP_HOST_SHOW=false
 
 autoload -U promptinit; promptinit
 prompt spaceship
