@@ -1,5 +1,9 @@
 # Daniel ZSH config
 
+export TERM="st-256color"
+autoload -U colors && colors # enable colors
+source ~/.local/share/powerlevel10k/powerlevel10k.zsh-theme
+
 # History Settings
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 HISTSIZE=10000
@@ -31,19 +35,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # Misc
-export TERM="st-256color"
-autoload -U colors && colors # enable colors
 setopt AUTO_CD # enable automatic cd into a directory
 setopt CORRECT # enable automatic correction
 setopt CORRECT_ALL # enable automatic correction
 stty stop undef # disable CTRL+S to freeze terminal
 
-# Prompt Settings
-
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_HOST_SHOW=false
-
-autoload -U promptinit; promptinit
-prompt spaceship
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
