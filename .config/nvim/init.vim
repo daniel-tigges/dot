@@ -51,6 +51,7 @@ call plug#end()
 	set shiftwidth=4
 " airline font
 	let g:airline_powerline_fonts=1
+	let g:airline_theme = 'material'
 
 " Enable autocompletion:
 	"set wildmode=longest,list,full
