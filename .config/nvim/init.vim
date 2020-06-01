@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
+Plug 'kaicataldo/material.vim'
 call plug#end()
 
 " Basics
@@ -23,7 +24,9 @@ call plug#end()
 " mapping for visual mode: :vmap/:vnoremap
 	set encoding=utf-8
 	syntax on
-	"color gruvbox
+	let g:material_terminal_italics=1 " enable italics
+	let g:material_theme_style='default' " material theme style
+	colorscheme material
 	set background=dark    " Setting dark mode
 	set termguicolors
 	set number
