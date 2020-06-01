@@ -1,5 +1,8 @@
 # Daniel ZSH config
 
+# Import colorscheme from wal
+[ -f ~/.cache/wal/sequences ] && (cat ~/.cache/wal/sequences &)
+
 export TERM="st-256color"
 autoload -U colors && colors # enable colors
 source ~/.local/share/powerlevel10k/powerlevel10k.zsh-theme

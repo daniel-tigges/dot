@@ -2,6 +2,9 @@
 
 # This file runs when a DM logs you into a graphical session.
 
+# Restore the last used pywal colorscheme
+[ -f ~/.cache/wal/sequences ] && (cat ~/.cache/wal/sequences &)
+
 #dunst &
 #insync start &
 #set-background &
