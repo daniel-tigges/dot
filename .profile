@@ -32,6 +32,15 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # import aliases
 [ -f "$XDG_CONFIG_HOME/aliasrc" ] && source "$XDG_CONFIG_HOME/aliasrc"
 
+# enable syntax highlighting in man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
 # cleanup home directory
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
@@ -42,5 +51,5 @@ export TERMINFO="$XDG_DATA_HOME/share/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/share/terminfo:/usr/share/terminfo"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export ERRFILE="$XDG_CACHE_HOME/xsession-errors"
