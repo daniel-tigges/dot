@@ -24,7 +24,8 @@ zstyle ':completion:*' list-suffixes # enable partial completion
 zstyle ':completion:*' expand prefix suffix # set partial completion rules
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # case-insentivity
 setopt COMPLETE_ALIASES # activate autocomplete for command line switches
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots) # Include hidden files.
+zmodload zsh/complist # to make use of vim keys in tab menu possible
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
