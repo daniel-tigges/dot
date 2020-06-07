@@ -49,9 +49,9 @@ echo "Enable lightdm"
 sudo systemctl enable lightdm
 # Configure lightdm and mini-greeter
 echo "Configure lightdm and greeter"
-sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=true/" $LightDMConfig
-sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
-sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
-cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
+sudo sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=true/" $LightDMConfig
+sudo sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
+sudo sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
+sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
 
 echo "Done. Restart system..."
