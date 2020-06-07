@@ -58,6 +58,7 @@ sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
 # Change default shell
 echo "Change default shell to zsh"
 sudo chsh -s /usr/bin/zsh
+sudo usermod --shell /usr/bin/zsh daniel
 
 # Set locale
 echo "Setting locale"
