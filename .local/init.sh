@@ -59,5 +59,16 @@ sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
 echo "Change default shell to zsh"
 sudo chsh -s /usr/bin/zsh
 
+# Set locale
+echo "Setting locale"
+sudo sed -i "/de_DE.UTF-8 UTF-8/s/.*/de_DE.UTF-8 UTF-8/" /etc/locale.gen
+sudo sed -i "/en_US.UTF-8 UTF-8/s/.*/en_US.UTF-8 UTF-8/" /etc/locale.gen
+sudo locale-gen
+sudo localectl set-locale LANG=de_DE.UTF-8
+sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
+
+# Set keymap
+echo "Setting keymap"
+sudo localectl set-keymap de
 
 echo "Done. Restart system..."
