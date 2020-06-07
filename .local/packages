@@ -9,6 +9,7 @@ dhcpcd
 fakeroot
 feh
 flex
+fzf
 gcc
 git
 groff
@@ -18,10 +19,12 @@ libtool
 lightdm-mini-greeter
 linux
 linux-firmware
+lxsession
 m4
 make
 man-db
 nano
+neovim
 nerd-fonts-inconsolata
 networkmanager
 noto-fonts-emoji
@@ -34,6 +37,7 @@ texinfo
 ttf-meslo-nerd-font-powerlevel10k
 wget
 which
+xcape
 xdo
 xf86-video-intel
 xf86-video-vesa
