@@ -11,7 +11,7 @@
 DotDirectory="$HOME/.dotfiles/"
 
 # Get dependent packages
-mkdir $HOME/.local
+mkdir -p $HOME/.local
 curl -Lks https://raw.githubusercontent.com/daniel-tigges/dot/master/.local/packages > $HOME/.local/packages
 
 # Install dependent packages
@@ -19,7 +19,7 @@ yay -Sy --needed --noconfirm - < $HOME/.local/packages
 
 git clone --bare https://github.com/daniel-tigges/dot.git $DotDirectory
 function config {
-   /usr/bin/git --git-dir=dot-directory --work-tree=$HOME $@
+   /usr/bin/git --git-dir=$DotDirectory --work-tree=$HOME $@
 }
 mkdir -p .config-backup
 config checkout
@@ -27,12 +27,12 @@ if [ $? = 0 ]; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} sh -c 'mkdir -p .config-backup/{} && mv {} .config-backup/{}'
 fi;
 config checkout
 config config status.showUntrackedFiles no
 
 # create directories and files
 mkdir -p $HOME/.cache/zsh # to store history file
-mkdir -o $HOME/.config/wget # for wget configuration
+mkdir -p $HOME/.config/wget # for wget configuration
 touch $HOME/.config/wget/wgetrc # for wget configuration
