@@ -23,7 +23,7 @@ echo "Install packages"
 yay -Sy --needed --noconfirm - < $HOME/.local/packages
 
 echo "Check out dotfiles"
-git clone --bare https://github.com/daniel-tigges/dot.git $DotDirectory
+git clone --recurse-submodules --bare https://github.com/daniel-tigges/dot.git $DotDirectory
 function config {
    /usr/bin/git --git-dir=$DotDirectory --work-tree=$HOME $@
 }
