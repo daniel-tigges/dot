@@ -9,6 +9,8 @@
 
 # Parameters
 DotDirectory="$HOME/.dotfiles/"
+LightDMConfig="/etc/lightdm/lightdm.conf"
+LightDMGreeterConfig="/etc/lightdm/lightdm-mini-greeter.conf"
 
 # Get dependent packages
 mkdir -p $HOME/.local
@@ -36,3 +38,12 @@ config config status.showUntrackedFiles no
 mkdir -p $HOME/.cache/zsh # to store history file
 mkdir -p $HOME/.config/wget # for wget configuration
 touch $HOME/.config/wget/wgetrc # for wget configuration
+
+# Enable lightdm
+systemctl enable lightdm
+# Configure lightdm and mini-greeter
+sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=true/" $LightDMConfig
+sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
+sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
+cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
+
