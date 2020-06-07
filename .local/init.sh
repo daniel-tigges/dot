@@ -37,6 +37,7 @@ if [ $? = 0 ]; then
 fi;
 config checkout
 config config status.showUntrackedFiles no
+config submodule update --init --remote
 
 # create directories and files
 echo "Create default directories"
@@ -53,5 +54,10 @@ sudo sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=tr
 sudo sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
 sudo sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
 sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
+
+# Change default shell
+echo "Change default shell to zsh"
+sudo chsh -s /usr/bin/zsh
+
 
 echo "Done. Restart system..."
