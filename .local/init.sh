@@ -10,10 +10,14 @@
 # Parameters
 DotDirectory="$HOME/.dotfiles/"
 
+# Get dependent packages
+mkdir $HOME/.local
+curl -Lks https://raw.githubusercontent.com/daniel-tigges/dot/master/.local/packages > $HOME/.local/packages
+
 # Install dependent packages
 yay -Sy --needed --noconfirm - < $HOME/.local/packages
 
-git clone --bare https://github.org/daniel-tigges/dot.git $DotDirectory
+git clone --bare https://github.com/daniel-tigges/dot.git $DotDirectory
 function config {
    /usr/bin/git --git-dir=dot-directory --work-tree=$HOME $@
 }
