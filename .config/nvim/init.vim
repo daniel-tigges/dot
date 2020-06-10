@@ -34,7 +34,7 @@ call plug#end()
 	set mouse=a
 	filetype plugin indent on
 	set nocompatible
-	set clipboard=unnamedplus
+	set clipboard+=unnamedplus
 	inoremap jj <Esc>
 	" Use ctrl-[hjkl] to select the active split!
 	nmap <silent> <c-k> :wincmd k<CR>

@@ -72,4 +72,10 @@ sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
 echo "Setting keymap"
 sudo localectl set-keymap de
 
+# Remove old bash files
+[ -f $HOME/.bash_history ] && rm $HOME/.bash_history
+[ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout
+[ -f $HOME/.bash_profile ] && rm $HOME/.bash_profile
+[ -f $HOME/.bashrc ] && rm $HOME/.bashrc
+
 echo "Done. Restart system..."

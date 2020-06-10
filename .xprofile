@@ -17,7 +17,7 @@ xset r rate 300 50 &
 
 lxpolkit &
 sxhkd &
-
+launch-polybar &
 #dunst &
 #insync start &
 #set-background &

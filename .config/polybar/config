@@ -1,0 +1,320 @@
+; vim:ft=dosini
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[settings]
+    screenchange-reload = true
+
+[global/wm]
+    margin-top = 0
+    margin-bottom = 0
+
+; Set such that they are read from Xresource.
+; Ín that way pyway has an effect here.
+[colors]
+	background = ${xrdb:color0:#222}
+	background-alt = ${xrdb:color4:#222}
+	foreground = ${xrdb:color7:#222}
+	foreground-alt = ${xrdb:color7:#222}
+	primary = ${xrdb:color1:#222}
+	secondary = ${xrdb:color2:#222}
+	alert = ${xrdb:color3:#222}
+
+[bar/base]
+    monitor = ${env:MONITOR:}
+    width = 100%
+    height = 24
+    offset-x = 0
+    offset-y = 0
+    radius = 0.0
+
+    background = ${colors.background}
+    foreground = ${colors.foreground}
+
+    line-size = 1
+    line-color = #000
+
+    border-bottom-size  = 0
+    border-top-size     = 0
+
+    border-left-size  = 0
+    border-right-size = 0
+
+    spacing            = 0
+    padding-left       = 0
+    padding-right      = 0
+    module-margin-left = 0
+    module-margin-right = 0
+
+    fixed-center = true
+
+    font-0 = "monospace:pixelsize=8;1"
+    font-1 = "Noto Color Emoji:size=8;1"
+
+    modules-left = bspwm
+    modules-center =
+    modules-right = date
+	;battery essid eth date
+	;pulseaudio-control
+
+	enable-ipc = false
+
+    ;override-redirect = true
+
+    ;scroll-up = i3wm-wsnext
+    ;scroll-down = i3wm-wsprev
+
+[module/bspwm]
+	type = internal/bspwm
+
+	label-focused = %index%
+	label-focused-background = ${colors.background-alt}
+	label-focused-underline= ${colors.primary}
+	label-focused-padding = 2
+
+	label-occupied = %index%
+	label-occupied-padding = 2
+
+	label-urgent = %index%!
+	label-urgent-background = ${colors.alert}
+	label-urgent-padding = 2
+
+	label-empty =
+	;%index%
+	label-empty-foreground = ${colors.foreground-alt}
+	label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/spotify]
+    type = custom/script
+    interval = 1
+    format-prefix = " "
+    format = <label>
+    exec = python ~/.config/polybar/scripts/spotify-status.py -f '{play_pause} {artist}: {song}' -t 50 -p '契,'
+    format-underline =
+
+[module/bluetooth]
+    type = custom/script
+    exec = ~/.config/polybar/scripts/rofi-bluetooth --status
+    interval = 1
+    click-left = rofi-bluetooth &
+
+[module/pulseaudio-control]
+    type = custom/script
+    tail = true
+    label=%output%
+
+    exec = ~/.config/polybar/scripts/pulseaudio-control.sh --listen
+    click-right = exec pavucontrol &
+    click-left = ~/.config/polybar/scripts/pulseaudio-control.sh --togmute
+    click-middle = ~/.config/polybar/scripts/pulseaudio-control.sh --change
+    scroll-up = ~/.config/polybar/scripts/pulseaudio-control.sh --up
+    scroll-down = ~/.config/polybar/scripts/pulseaudio-control.sh --down
+    label-padding = 2
+    label-foreground = ${colors.sound}
+
+
+[module/battery]
+	type          = internal/battery
+	full-at       = 98
+	battery       = BAT0
+	adapter       = AC
+	poll-interval = 5
+
+	format-charging = <animation-charging> <label-charging>
+
+	format-charging-prefix            =
+	format-charging-prefix-background = ${colors.background}
+	format-charging-prefix-foreground = ${colors.battery}
+	format-charging-prefix-padding    = 0
+
+	label-charging            = "%percentage%%"
+	label-charging-background = ${colors.background}
+	label-charging-foreground = ${colors.battery}
+	label-charging-padding    = 0
+
+	format-discharging = <ramp-capacity> <label-discharging>
+
+	format-discharging-prefix            =
+	format-discharging-prefix-background = ${colors.background}
+	format-discharging-prefix-foreground = ${colors.battery}
+	format-discharging-prefix-padding    = 0
+
+	label-discharging            = "%percentage%% "
+	label-discharging-background = ${colors.background}
+	label-discharging-foreground = ${colors.battery}
+	label-discharging-padding    = 0
+
+	format-full = <label-full>
+
+	format-full-prefix            = " "
+    format-full-prefix-background = ${colors.background}
+	format-full-prefix-foreground = ${colors.battery}
+	format-full-prefix-padding    = 0
+
+	label-full            = "%percentage%%"
+	label-full-background = ${colors.background}
+	label-full-foreground = ${colors.battery}
+	label-full-padding    = 0
+
+    ; Only applies if <ramp-capacity> is used
+    ramp-capacity-0 = 
+    ramp-capacity-0-foreground = ${colors.battery}
+    ramp-capacity-1 = 
+    ramp-capacity-1-foreground = ${colors.battery}
+    ramp-capacity-2 = 
+    ramp-capacity-2-foreground = ${colors.battery}
+    ramp-capacity-3 = 
+    ramp-capacity-3-foreground = ${colors.battery}
+    ramp-capacity-4 = 
+    ramp-capacity-4-foreground = ${colors.battery}
+
+    ; Only applies if <animation-charging> is used
+    animation-charging-0 = 
+    animation-charging-0-foreground = ${colors.battery}
+    animation-charging-1 = 
+    animation-charging-1-foreground = ${colors.battery}
+    animation-charging-2 = 
+    animation-charging-2-foreground = ${colors.battery}
+    animation-charging-3 = 
+    animation-charging-3-foreground = ${colors.battery}
+    animation-charging-4 = 
+    animation-charging-4-foreground = ${colors.battery}
+    ; Framerate in milliseconds
+    animation-charging-framerate = 750
+
+    ; Only applies if <animation-discharging> is used
+    animation-discharging-0 = 
+    animation-discharging-0-foreground = ${colors.battery}
+    animation-discharging-1 = 
+    animation-discharging-1-foreground = ${colors.battery}
+    animation-discharging-2 = 
+    animation-discharging-2-foreground = ${colors.battery}
+    animation-discharging-3 = 
+    animation-discharging-3-foreground = ${colors.battery}
+    animation-discharging-4 = 
+    animation-discharging-4-foreground = ${colors.battery}
+    ; Framerate in milliseconds
+    animation-discharging-framerate = 500
+
+[module/eth]
+    type          = internal/network
+    interface     = enp0s25
+    ping-interval = 3
+
+    format-connected = <label-connected>
+
+    format-connected-prefix            = ""
+    format-connected-prefix-padding    = 1
+    format-connected-prefix-background = ${colors.background}
+    format-connected-prefix-foreground = ${colors.network}
+
+    label-connected            = "%local_ip% "
+    label-connected-background = ${colors.background}
+    label-connected-foreground = ${colors.network}
+    label-connected-padding    = 0
+
+    format-disconnected = <label-disconnected>
+
+    format-disconnected-prefix            =
+    format-disconnected-prefix-padding    = 1
+    format-disconnected-prefix-background = ${colors.background}
+    format-disconnected-prefix-foreground = ${colors.network}
+
+    label-disconnected            = ""
+    label-disconnected-background = ${colors.background}
+    label-disconnected-foreground = ${colors.network}
+    label-disconnected-padding    = 1.5
+
+    format-packetloss = <label-packetloss>
+
+    label-packetloss            = "%local_ip% "
+    label-packetloss-background = ${colors.background}
+    label-packetloss-foreground = ${colors.packetloss}
+    label-packetloss-padding    = 0
+
+    format-packetloss-prefix            = ""
+    format-packetloss-prefix-padding    = 1
+    format-packetloss-prefix-background = ${colors.background}
+    format-packetloss-prefix-foreground = ${colors.packetloss}
+
+[module/essid]
+    type          = internal/network
+    interface     = wlp3s0
+    ping-interval = 3
+
+    format-connected = <label-connected>
+
+    format-connected-prefix            = ""
+    format-connected-prefix-padding    = 1
+    format-connected-prefix-background = ${colors.background}
+    format-connected-prefix-foreground = ${colors.network}
+
+    label-connected            = "%essid% [%local_ip%] "
+    label-connected-background = ${colors.background}
+    label-connected-foreground = ${colors.network}
+    label-connected-padding    = 0
+
+    format-disconnected = <label-disconnected>
+
+    format-disconnected-prefix            =
+    format-disconnected-prefix-padding    = 0
+    format-disconnected-prefix-background = ${colors.background}
+    format-disconnected-prefix-foreground = ${colors.network}
+
+    label-disconnected            = " 睊"
+    label-disconnected-background = ${colors.background}
+    label-disconnected-foreground = ${colors.network}
+    label-disconnected-padding    = 1.5
+
+    format-packetloss = <label-packetloss>
+
+    label-packetloss            = "%essid% "
+    label-packetloss-background = ${colors.background}
+    label-packetloss-foreground = ${colors.packetloss}
+    label-packetloss-padding    = 0
+
+    format-packetloss-prefix            = ""
+    format-packetloss-prefix-padding    = 1
+    format-packetloss-prefix-background = ${colors.background}
+    format-packetloss-prefix-foreground = ${colors.packetloss}
+
+[module/date]
+    type = internal/date
+    interval = 5
+
+    date = "%d.%m.%Y"
+    time = %H:%M
+
+    format-prefix = 
+    format-prefix-background = ${colors.bg-date}
+    format-prefix-foreground = ${colors.foreground}
+    format-prefix-padding    = 1
+
+    label-background = ${colors.bg-date}
+    label-foreground = ${colors.foreground}
+    label-padding    = 1
+
+    label = %date% - %time%
+
+[module/updates-arch-combined]
+    type = custom/script
+    exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+    interval = 600
