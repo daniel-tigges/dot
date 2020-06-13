@@ -9,9 +9,6 @@ xcape -e 'Caps_Lock=Escape'
 # Speed up rate for long key presses
 xset r rate 300 50 &
 
-# Restore the last used pywal colorscheme
-[ -f ~/.cache/wal/sequences ] && (cat ~/.cache/wal/sequences &)
-
 
 # Start programs
 
@@ -24,3 +21,7 @@ launch-polybar &
 #entr_wallswitch &
 #entr_greeterswitch &
 #picom -b -c -C --config ~/.config/compton/compton.conf &
+
+# Restore last wal theme
+wal -R
+
