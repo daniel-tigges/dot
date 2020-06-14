@@ -59,7 +59,7 @@
 
     modules-left = bspwm
     modules-center = date
-    modules-right = eth essid battery
+    modules-right = bluetooth eth essid battery
 	;pulseaudio-control
 
 	enable-ipc = false
@@ -89,6 +89,13 @@
 	label-empty-foreground = ${colors.foreground-alt}
 	label-empty-padding = 2
 
+[module/bluetooth]
+	type = custom/script
+	exec = bluetooth-status
+	interval = 10
+	label-padding = 1
+	click-left = $TERMINAL -e bluetoothctl
+
 [module/spotify]
     type = custom/script
     interval = 1
@@ -96,12 +103,6 @@
     format = <label>
     exec = python ~/.config/polybar/scripts/spotify-status.py -f '{play_pause} {artist}: {song}' -t 50 -p '契,'
     format-underline =
-
-[module/bluetooth]
-    type = custom/script
-    exec = ~/.config/polybar/scripts/rofi-bluetooth --status
-    interval = 1
-    click-left = rofi-bluetooth &
 
 [module/pulseaudio-control]
     type = custom/script

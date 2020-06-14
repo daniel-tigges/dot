@@ -72,6 +72,13 @@ sudo localectl set-locale LC_MESSAGES=en_US.UTF-8
 echo "Setting keymap"
 sudo localectl set-keymap de
 
+# Auto enable bluetooth
+sudo systemctl enable bluetooth && sudo systemctl start bluetooth
+sudo sed -i "/AutoEnable=/s/.*/AutoEnable=true/" /etc/bluetooth/main.conf
+sudo sed -i "/DiscoverableTimeout =/s/.*/DiscoverableTimeout = 0/" /etc/bluetooth/main.conf
+sudo sed -i "/Discoverable =/s/.*/Discoverable = true/" /etc/bluetooth/main.conf
+sudo btmgmt ssp off
+
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
 [ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout
