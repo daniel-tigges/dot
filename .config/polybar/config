@@ -58,8 +58,8 @@
     font-1 = "Noto Color Emoji:size=8;1"
 
     modules-left = bspwm
-    modules-center =
-    modules-right = eth essid battery date
+    modules-center = date
+    modules-right = eth essid battery
 	;pulseaudio-control
 
 	enable-ipc = false
@@ -132,7 +132,7 @@
 	format-charging-prefix-foreground = ${colors.foreground}
 	format-charging-prefix-padding    = 0
 
-	label-charging            = "%percentage%%"
+	label-charging            = "%percentage%% "
 	label-charging-background = ${colors.background}
 	label-charging-foreground = ${colors.foreground-alt}
 	label-charging-padding    = 0
@@ -156,7 +156,7 @@
 	format-full-prefix-foreground = ${colors.foreground}
 	format-full-prefix-padding    = 0
 
-	label-full            = "%percentage%%"
+	label-full            = "%percentage%% "
 	label-full-background = ${colors.background}
 	label-full-foreground = ${colors.foreground}
 	label-full-padding    = 0
