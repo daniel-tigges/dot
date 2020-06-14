@@ -22,6 +22,8 @@ launch-polybar &
 #entr_greeterswitch &
 #picom -b -c -C --config ~/.config/compton/compton.conf &
 
+# Set wallpaper
+set-wallpaper
 # Restore last wal theme
 wal -R
 
