@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+INC=5  # Increment when lowering/rising the volume
+VOLUME_ICONS=( "# " "# " "# " )  # Volume icons array, from lower volume to higher
+MUTED_ICON="# "  # Muted volume icon
+MUTED_COLOR="%{F#6b6b6b}"  # Color when the audio is muted
+
+
+function volUp() {
+	pamixer --$type $device --increase $INC
+}
+
+function volDown() {
+	pamixer --$type $device --decrease $INC
+}
+
+function toggleMute(){
+	pamixer --$type $device --toggle-mute
+}
+
+function mute(){
+	pamixer --$type $device --mute
+}
+
+function unmute(){
+	pamixer --$type $device --unmute
+}
+
+function output() {
+	vol=$(pamixer --$type $device --get-volume-human)
+	muted=0
+    # Showing the formatted message
+    if [ "$vol" = "muted" ]; then
+        echo "${MUTED_COLOR} ⭘  ${END_COLOR}"
+    else
+        printf "%-4s" ${vol}
+    fi
+}
+
+function usage() {
+    echo "Usage: $1 sink or source, $2 sink/source name, $3 action"
+    echo ""
+    echo "Actions:"
+    echo "    output            print the PulseAudio status once"
+    echo "    up, down          increase or decrease the default sink's volume"
+    echo "    mute, unmute      mute or unmute the default sink's audio"
+    echo "    toggle-mute           switch between muted and unmuted"
+    echo "                      the be the same as the current sink's volume"
+    echo ""
+}
+
+type=$1
+device=$2
+case "$3" in
+    up)
+        volUp
+        ;;
+    down)
+        volDown
+        ;;
+    toggle-mute)
+		toggleMute
+        ;;
+    mute)
+		mute
+        ;;
+    unmute)
+        unmute
+        ;;
+    output)
+        output
+        ;;
+    *)
+        usage
+        ;;
+esac

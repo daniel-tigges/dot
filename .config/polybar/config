@@ -93,6 +93,12 @@
 	label-empty-padding = 2
 
 
+[module/updates-arch-combined]
+    type = custom/script
+    exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+    interval = 600
+
+
 [module/speaker]
 	type = custom/ipc
 	hook-0 = speaker-control sink "alsa_output.pci-0000_00_1b.0.analog-stereo" output
@@ -142,21 +148,6 @@
     format = <label>
     exec = python ~/.config/polybar/scripts/spotify-status.py -f '{play_pause} {artist}: {song}' -t 50 -p '契,'
     format-underline =
-
-[module/pulseaudio-control]
-    type = custom/script
-    tail = true
-    label=%output%
-
-    exec = ~/.config/polybar/scripts/pulseaudio-control.sh --listen
-    click-right = exec pavucontrol &
-    click-left = ~/.config/polybar/scripts/pulseaudio-control.sh --togmute
-    click-middle = ~/.config/polybar/scripts/pulseaudio-control.sh --change
-    scroll-up = ~/.config/polybar/scripts/pulseaudio-control.sh --up
-    scroll-down = ~/.config/polybar/scripts/pulseaudio-control.sh --down
-    label-padding = 2
-    label-foreground = ${colors.sound}
-
 
 [module/battery]
 	type          = internal/battery
@@ -340,8 +331,3 @@
     label-padding    = 1
 
     label = %date% - %time%
-
-[module/updates-arch-combined]
-    type = custom/script
-    exec = ~/.config/polybar/scripts/updates-arch-combined.sh
-    interval = 600
