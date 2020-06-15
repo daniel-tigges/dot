@@ -9,12 +9,15 @@ xcape -e 'Caps_Lock=Escape'
 # Speed up rate for long key presses
 xset r rate 300 50 &
 
+# Restore last wal theme
+wal -R
+
+# Set displays
+
 
 # Start programs
-
 lxpolkit &
 sxhkd &
-launch-polybar &
 #dunst &
 #insync start &
 #set-background &
@@ -24,6 +27,3 @@ launch-polybar &
 
 # Set wallpaper
 set-wallpaper
-# Restore last wal theme
-wal -R
-

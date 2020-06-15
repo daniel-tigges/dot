@@ -54,15 +54,15 @@
 
     fixed-center = true
 
-    font-0 = "monospace:pixelsize=8;1"
+    font-0 = "monospace:pixelsize=9;2"
     font-1 = "Noto Color Emoji:size=8;1"
 
     modules-left = bspwm
     modules-center = date
-    modules-right = bluetooth eth essid battery
+    modules-right = microphone headphones speaker bluetooth eth essid battery
 	;pulseaudio-control
 
-	enable-ipc = false
+	enable-ipc = true
 
     override-redirect = false
 	wm-restack = bspwm
@@ -72,6 +72,9 @@
 
 [module/bspwm]
 	type = internal/bspwm
+	pin-workspaces = true
+
+	format = <label-monitor> <label-state>
 
 	label-focused = %index%
 	label-focused-background = ${colors.background-alt}
@@ -88,6 +91,42 @@
 	label-empty =
 	label-empty-foreground = ${colors.foreground-alt}
 	label-empty-padding = 2
+
+
+[module/speaker]
+	type = custom/ipc
+	hook-0 = speaker-control sink "alsa_output.pci-0000_00_1b.0.analog-stereo" output
+	initial = 1
+    click-right = $TERMINAL -e pulsemixer && polybar-msg hook speaker 1 &
+    click-left = speaker-control sink "alsa_output.pci-0000_00_1b.0.analog-stereo" toggle-mute && polybar-msg hook speaker 1
+    scroll-up = speaker-control sink "alsa_output.pci-0000_00_1b.0.analog-stereo" up && polybar-msg hook speaker 1
+    scroll-down = speaker-control sink "alsa_output.pci-0000_00_1b.0.analog-stereo" down && polybar-msg hook speaker 1
+    format-prefix = "墳 "
+	format-padding = 0
+
+
+[module/headphones]
+	type = custom/ipc
+	hook-0 = speaker-control sink "alsa_output.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.analog-stereo" output
+	initial = 1
+    click-right = $TERMINAL -e pulsemixer && polybar-msg hook headphones 1 &
+    click-left = speaker-control sink "alsa_output.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.analog-stereo" toggle-mute && polybar-msg hook headphones 1
+    scroll-up = speaker-control sink "alsa_output.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.analog-stereo" up && polybar-msg hook headphones 1
+    scroll-down = speaker-control sink "alsa_output.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.analog-stereo" down && polybar-msg hook headphones 1
+    format-prefix = " "
+	format-padding = 0
+
+
+[module/microphone]
+	type = custom/ipc
+	hook-0 = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" output
+	initial = 1
+    click-right = $TERMINAL -e pulsemixer && polybar-msg hook headphones 1 &
+    click-left = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" toggle-mute && polybar-msg hook microphone 1
+    scroll-up = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" up && polybar-msg hook microphone 1
+    scroll-down = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" down && polybar-msg hook microphone 1
+    format-prefix = " "
+	format-padding = 0
 
 [module/bluetooth]
 	type = custom/script

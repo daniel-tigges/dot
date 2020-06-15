@@ -52,6 +52,7 @@ sudo systemctl enable lightdm
 echo "Configure lightdm and greeter"
 sudo sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=true/" $LightDMConfig
 sudo sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
+sudo sed -i "/display-setup-script=/s/.*/display-setup-script=\/home\/daniel\/.local\/bin\/set-displays/" $LightDMConfig
 sudo sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
 sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
 
@@ -79,10 +80,16 @@ sudo sed -i "/DiscoverableTimeout =/s/.*/DiscoverableTimeout = 0/" /etc/bluetoot
 sudo sed -i "/Discoverable =/s/.*/Discoverable = true/" /etc/bluetooth/main.conf
 sudo btmgmt ssp off
 
+# Enable multilib repository
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
 [ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout
 [ -f $HOME/.bash_profile ] && rm $HOME/.bash_profile
 [ -f $HOME/.bashrc ] && rm $HOME/.bashrc
+
+# Set inital pywal theme
+wal --theme sexy-material
 
 echo "Done. Restart system..."

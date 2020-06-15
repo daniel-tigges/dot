@@ -1,6 +1,15 @@
 #! /bin/sh
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# Start polybar
+launch-polybar &
+
+# Monitor Setup
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+
+bspc monitor HDMI2 -a 1 2 3 4 5
+bspc monitor VGA1 -a 6 7 8 8 9
+bspc monitor LVDS1 -a 0
 
 bspc config border_width         2
 bspc config window_gap          12
