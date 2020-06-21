@@ -87,6 +87,13 @@ sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 chmod +x .local/share/bspswallow/alternative/bspswallow
 ln -s /home/daniel/.local/share/bspswallow/bspswallow /home/daniel/.local/bin/bspswallow
 
+# Add udev rules
+sudo cp /home/daniel/.local/system/audio-update.service /etc/systemd/system/audio-update.service
+systemctl enable audio-update.service
+
+# Add system services
+sudo cp /home/daniel/.local/system/80-headset-state-changed.rules /etc/udev/rules.d/80-headset-state-changed.rules
+
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
 [ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout

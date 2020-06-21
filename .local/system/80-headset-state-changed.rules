@@ -1,0 +1,4 @@
+ACTION=="add", SUBSYSTEM=="sound", ENV{ID_TYPE}=="audio", ENV{ID_MODEL}=="Jabra_Link_370", RUN+="/usr/bin/systemctl --no-block start audio-update.service"
+ACTION=="remove", SUBSYSTEM=="sound", ENV{ID_TYPE}=="audio", ENV{ID_MODEL}=="Jabra_Link_370", RUN+="/usr/bin/systemctl --no-block start audio-update.service"
+#ACTION=="add", SUBSYSTEM=="sound", ENV{ID_TYPE}=="audio", ENV{ID_MODEL}=="Jabra_Link_370", ENV{SYSTEMD_USER_WANTS}+="audio-update.service"
+#ACTION=="remove", SUBSYSTEM=="sound", ENV{ID_TYPE}=="audio", ENV{ID_MODEL}=="Jabra_Link_370", ENV{SYSTEMD_USER_WANTS}+="audio-update.service"

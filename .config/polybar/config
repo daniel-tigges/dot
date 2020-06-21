@@ -127,7 +127,7 @@
 	type = custom/ipc
 	hook-0 = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" output
 	initial = 1
-    click-right = $TERMINAL -e pulsemixer && polybar-msg hook headphones 1 &
+    click-right = $TERMINAL -e pulsemixer && polybar-msg hook microphone 1 &
     click-left = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" toggle-mute && polybar-msg hook microphone 1
     scroll-up = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" up && polybar-msg hook microphone 1
     scroll-down = speaker-control source "alsa_input.usb-0b0e_Jabra_Link_370_70BF92E0A046-00.mono-fallback" down && polybar-msg hook microphone 1

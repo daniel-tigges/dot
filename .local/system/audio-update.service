@@ -1,0 +1,7 @@
+[Unit]
+Description=Updates the audio controls of polybar
+
+[Service]
+Type=simple
+ExecStart=/home/daniel/.local/bin/bar-modules/update-audio
+
