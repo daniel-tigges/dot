@@ -54,7 +54,7 @@ sudo sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=tr
 sudo sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
 sudo sed -i "/display-setup-script=/s/.*/display-setup-script=\/home\/daniel\/.local\/bin\/set-displays/" $LightDMConfig
 sudo sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
-sudo cp $HOME/.local/share/lightdm-mini-greeter.conf $LightDMGreeterConfig
+sudo cp $HOME/.local/system/lightdm-mini-greeter.conf $LightDMGreeterConfig
 
 # Change default shell
 echo "Change default shell to zsh"
@@ -83,16 +83,16 @@ sudo btmgmt ssp off
 # Enable multilib repository
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-#Link bspswallo script
-chmod +x .local/share/bspswallow/alternative/bspswallow
+#Link bspswallo script from git submodule
+chmod +x $HOME/.local/share/bspswallow/alternative/bspswallow
 ln -s /home/daniel/.local/share/bspswallow/bspswallow /home/daniel/.local/bin/bspswallow
 
 # Add udev rules
-sudo cp /home/daniel/.local/system/audio-update.service /etc/systemd/system/audio-update.service
+sudo cp $HOME/.local/system/audio-update.service /etc/systemd/system/audio-update.service
 systemctl enable audio-update.service
 
 # Add system services
-sudo cp /home/daniel/.local/system/80-headset-state-changed.rules /etc/udev/rules.d/80-headset-state-changed.rules
+sudo cp $HOME/.local/system/80-headset-state-changed.rules /etc/udev/rules.d/80-headset-state-changed.rules
 
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
