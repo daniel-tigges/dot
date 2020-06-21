@@ -83,6 +83,10 @@ sudo btmgmt ssp off
 # Enable multilib repository
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
+#Link bspswallo script
+chmod +x .local/share/bspswallow/alternative/bspswallow
+ln -s /home/daniel/.local/share/bspswallow/bspswallow /home/daniel/.local/bin/bspswallow
+
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
 [ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout

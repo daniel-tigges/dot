@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# Enable windwos swallowing
+pidof bspswallow || bspswallow &
+
 # Start polybar
 launch-polybar &
 
