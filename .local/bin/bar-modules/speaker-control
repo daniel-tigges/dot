@@ -4,6 +4,7 @@ INC=5  # Increment when lowering/rising the volume
 VOLUME_ICONS=( "# " "# " "# " )  # Volume icons array, from lower volume to higher
 MUTED_ICON="# "  # Muted volume icon
 MUTED_COLOR="%{F#6b6b6b}"  # Color when the audio is muted
+OFFLINE_COLOR="%{F#e53935}"  # Color when the audio is muted
 
 
 function volUp() {
@@ -28,10 +29,11 @@ function unmute(){
 
 function output() {
 	vol=$(pamixer --$type $device --get-volume-human)
-	muted=0
     # Showing the formatted message
     if [ "$vol" = "muted" ]; then
         echo "${MUTED_COLOR} ⭘  ${END_COLOR}"
+	elif [ -z "$vol" ]; then
+		echo "${OFFLINE_COLOR}🔴 ${END_COLOR}"
     else
         printf "%-4s" ${vol}
     fi

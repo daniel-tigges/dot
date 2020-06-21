@@ -55,7 +55,7 @@
     fixed-center = true
 
     font-0 = "monospace:pixelsize=9;2"
-    font-1 = "Noto Color Emoji:size=8;1"
+    font-1 = "Noto Color Emoji:scale=16:size=8;1"
 
     modules-left = bspwm
     modules-center = date
