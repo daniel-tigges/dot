@@ -4,3 +4,6 @@
 [submodule ".local/share/fast-syntax-highlighting"]
 	path = .local/share/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule ".local/share/bspswallow"]
+	path = .local/share/bspswallow
+	url = https://github.com/JopStro/bspswallow
