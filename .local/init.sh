@@ -83,16 +83,17 @@ sudo btmgmt ssp off
 # Enable multilib repository
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-#Link bspswallo script from git submodule
+# Link bspswallo script from git submodule
 chmod +x $HOME/.local/share/bspswallow/alternative/bspswallow
 ln -s /home/daniel/.local/share/bspswallow/bspswallow /home/daniel/.local/bin/bspswallow
 
-# Add udev rules
+# Add system services
 sudo cp $HOME/.local/system/audio-update.service /etc/systemd/system/audio-update.service
 systemctl enable audio-update.service
 
-# Add system services
+# Add udev rules
 sudo cp $HOME/.local/system/80-headset-state-changed.rules /etc/udev/rules.d/80-headset-state-changed.rules
+sudo cp $HOME/.local/system/81-monitor-hotplug.rules /etc/udev/rules.d/81-monitor-hotplug.rules
 
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history

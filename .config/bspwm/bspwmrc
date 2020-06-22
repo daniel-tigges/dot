@@ -6,6 +6,8 @@ pidof bspswallow || bspswallow &
 # Start polybar
 launch-polybar &
 
+bspc rule -r "*" # remove all rules first
+
 # Monitor Setup
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
@@ -26,3 +28,5 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+# Window Rules
+bspc rule -a Arandr state=floating rectangle=800x500+150+150 sticky=on

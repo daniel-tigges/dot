@@ -1,0 +1,1 @@
+KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/lightdm/daniel/xauthority", RUN+="/usr/bin/arandr"
