@@ -9,6 +9,7 @@
 #	- yay and git has to be installed
 
 # Parameters
+USER=$(whoami)
 DotDirectory="$HOME/.dotfiles/"
 LightDMConfig="/etc/lightdm/lightdm.conf"
 LightDMGreeterConfig="/etc/lightdm/lightdm-mini-greeter.conf"
@@ -94,6 +95,11 @@ systemctl enable audio-update.service
 # Add udev rules
 sudo cp $HOME/.local/system/80-headset-state-changed.rules /etc/udev/rules.d/80-headset-state-changed.rules
 sudo cp $HOME/.local/system/81-monitor-hotplug.rules /etc/udev/rules.d/81-monitor-hotplug.rules
+
+# Enable Virtualization
+sudo systemctl enable libvirtd
+sudo groupadd libvirtd
+sudo usermod -G libvirtd -a $USER
 
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history

@@ -1,4 +1,5 @@
 alacritty
+arandr
 autoconf
 automake
 base
@@ -12,6 +13,8 @@ btrfs-progs
 dhcpcd
 dialog
 dmenu
+dnsmasq
+ebtables
 f2fs-tools
 fakeroot
 feh
@@ -22,8 +25,12 @@ git
 grub
 inetutils
 intel-ucode
+iw
 jfsutils
+lib32-alsa-plugins
+lib32-libpulse
 libtool
+libvirt
 lightdm-mini-greeter
 linux
 linux-firmware
@@ -42,13 +49,20 @@ nerd-fonts-inconsolata
 net-tools
 netctl
 networkmanager
+newsboat
 noto-fonts-emoji
 os-prober
+pamixer
 parted
 patch
 pkgconf
 polybar
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+pulsemixer
 python-pywal
+qemu
 reiserfsprogs
 s-nail
 sudo
@@ -59,6 +73,7 @@ tig
 ttf-meslo-nerd-font-powerlevel10k
 usbutils
 vi
+virt-manager
 wget
 which
 wireless_tools
