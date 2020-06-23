@@ -1,4 +1,5 @@
 #! /bin/sh
+bspc rule -r "*" # remove all rules first
 
 # Enable windwos swallowing
 pidof bspswallow || bspswallow &
@@ -6,27 +7,35 @@ pidof bspswallow || bspswallow &
 # Start polybar
 launch-polybar &
 
-bspc rule -r "*" # remove all rules first
-
-# Monitor Setup
-bspc config remove_unplugged_monitors true
-bspc config remove_disabled_monitors true
-
-bspc monitor HDMI2 -a 1 2 3 4 5
-bspc monitor VGA1 -a 6 7 8 8 9
-bspc monitor LVDS1 -a 0
-
+# General Settings
+bspc config focus_follows_pointer true
 bspc config border_width         2
-bspc config window_gap          12
+bspc config window_gap          10
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+# Monitor Setup
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+
+i=1
+n=`bspc query -M | wc -l`  # count number of lines in bspwm's monitor list
+per=$(( 10 / n ))          # number of desktops per monitor
+for monitor in `bspc query -M`; do
+    bspc monitor $monitor -d `seq $i $(( i + per - 1 ))`
+    i=$(( i + per ))
+done
+
+# Pointer configuration
+bspc config pointer_modifier lock
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+# Colors
+bspc config focused_border_color "#E84F4F"
+
 # Window Rules
 bspc rule -a Arandr state=floating rectangle=800x500+150+150 sticky=on
