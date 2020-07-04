@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Audio update called at $(date)" >> /tmp/audio.log
+sleep 5
+polybar-msg hook headphones 1
+sleep 1
+polybar-msg hook microphone 1
+sleep 1
+polybar-msg hook speaker 1
+

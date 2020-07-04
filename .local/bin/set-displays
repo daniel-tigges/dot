@@ -1,0 +1,43 @@
+#!/bin/bash
+
+MAIN="LVDS1"
+PLACEMENT="left-of"
+LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
+NR_DISPLAYS=$(xrandr -q | grep " connected" | cut -d ' ' -f1 | wc -l)
+mapfile -t CONNECTED < <(xrandr -q | grep " connected" | cut -d ' ' -f1)
+
+if [ "$NR_DISPLAYS" -eq 2 ]; then
+    PLACEMENT="right-of"
+fi
+
+echo "$NR_DISPLAYS displays connected."
+
+for i in "${!CONNECTED[@]}"; do
+    if [ "${CONNECTED[i]}" == "$MAIN" ] && [ "$LID_STATE" == "closed" ]; then
+        echo "Lid closed, deactivating internal display."
+        xrandr --output "$MAIN" --off
+        elif [ $i -eq 0 ]; then
+        echo "Activating ${CONNECTED[i]}"
+        xrandr --output "${CONNECTED[i]}" --auto
+    else
+        echo "Activating ${CONNECTED[i]} $PLACEMENT ${CONNECTED[i-1]}"
+        xrandr --output "${CONNECTED[i]}" --auto --"$PLACEMENT" "${CONNECTED[i-1]}"
+    fi
+done
+
+# #!/bin/sh
+
+# MAIN="LVDS-1"
+# LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
+# CONNECTED=$(xrandr -q | grep " connected" | cut -d ' ' -f1)
+
+# for m in $CONNECTED; do
+#     if [ "$m" == "$MAIN" ] && [ "$LID_STATE" == "closed" ]; then
+#         echo "Lid closed, deactivating internal display."
+#         xrandr --output "$MAIN" --off
+#     else
+#         echo "(De)activating $m"
+#         xrandr --output "$m" --off
+#         xrandr --output "$m" --auto
+#     fi
+# done
