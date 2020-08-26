@@ -1,0 +1,24 @@
+auto-reload yes
+
+
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key a toggle-article-read
+
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+
+# plain color scheme for newsbeuter <http://www.newsbeuter.org/>
+# boring black and white color configuration that resembles the classic look of really old terminals
+
+color listnormal        default default
+color listnormal_unread default default
+color listfocus         default default reverse bold
+color listfocus_unread  default default reverse bold
+color info              default default reverse
+color background        default default
+color article           default default

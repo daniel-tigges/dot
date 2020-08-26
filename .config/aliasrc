@@ -16,6 +16,8 @@ alias disable_webcam="sudo modprobe -r uvcvideo"
 alias enable_webcam="sudo modprobe uvcvideo"
 
 alias v="nvim" nv="nvim" vim="nvim" vimdiff="nvim -d"
+alias code="code --extensions-dir "$XDG_DATA_HOME/Code/extensions""
+
 
 # fuzzy finder functions
 fs() { find $SCRIPTS ~/.config/ -type f | fzf | xargs -r $EDITOR ;}

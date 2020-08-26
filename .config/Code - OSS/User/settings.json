@@ -1,0 +1,15 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E402",
+    ],
+    "python.linting.enabled": true,
+    "python.languageServer": "Microsoft",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.trimTrailingWhitespace": true
+}
