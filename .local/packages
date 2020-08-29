@@ -10,6 +10,7 @@ bluez-utils
 brave-bin
 bspwm
 btrfs-progs
+code
 dhcpcd
 dialog
 dmenu
@@ -18,15 +19,18 @@ ebtables
 f2fs-tools
 fakeroot
 feh
+filezilla
 flex
 fzf
 gcc
+gimp
 git
 grub
 inetutils
 intel-ucode
 iw
 jfsutils
+jq
 lib32-alsa-plugins
 lib32-libpulse
 libtool
@@ -51,6 +55,7 @@ netctl
 networkmanager
 newsboat
 noto-fonts-emoji
+openssh
 os-prober
 pamixer
 parted
@@ -61,6 +66,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulsemixer
+python-pip
 python-pywal
 qemu
 reiserfsprogs
@@ -80,6 +86,7 @@ wireless_tools
 wpa_supplicant
 xcape
 xdo
+xdotool
 xf86-video-intel
 xf86-video-vesa
 xfsprogs
@@ -133,5 +140,6 @@ xorg-xwininfo
 xorg-xwud
 xsel
 yay
+youtube-dl
 zsh
 zsh-completions

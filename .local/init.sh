@@ -101,6 +101,9 @@ sudo systemctl enable libvirtd
 sudo groupadd libvirtd
 sudo usermod -G libvirtd -a $USER
 
+# Enable ssh daemon
+sudo systemctl enable sshd
+
 # Remove old bash files
 [ -f $HOME/.bash_history ] && rm $HOME/.bash_history
 [ -f $HOME/.bash_logout ] && rm $HOME/.bash_logout

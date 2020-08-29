@@ -11,5 +11,7 @@
     "python.linting.enabled": true,
     "python.languageServer": "Microsoft",
     "diffEditor.ignoreTrimWhitespace": false,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "workbench.sideBar.location": "left",
+    "window.zoomLevel": -1
 }
