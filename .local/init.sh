@@ -53,7 +53,7 @@ sudo systemctl enable lightdm
 echo "Configure lightdm and greeter"
 sudo sed -i "/user-authority-in-system-dir=/s/.*/user-authority-in-system-dir=true/" $LightDMConfig
 sudo sed -i "/greeter-session=/s/.*/greeter-session=lightdm-mini-greeter/" $LightDMConfig
-sudo sed -i "/display-setup-script=/s/.*/display-setup-script=\/home\/daniel\/.local\/bin\/set-displays/" $LightDMConfig
+sudo sed -i "/display-setup-script=/s/.*/display-setup-script=\/home\/daniel\/.local\/bin\/initial-display-setup/" $LightDMConfig
 sudo sed -i "/user-session=/s/.*/user-session=bspwm/" $LightDMConfig
 sudo cp $HOME/.local/system/lightdm-mini-greeter.conf $LightDMGreeterConfig
 

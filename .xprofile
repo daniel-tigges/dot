@@ -21,6 +21,7 @@ wal -R
 # Start programs
 lxpolkit &
 sxhkd &
+dockd --daemon &
 #dunst &
 #insync start &
 #set-background &

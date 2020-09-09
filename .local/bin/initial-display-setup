@@ -16,7 +16,7 @@ for i in "${!CONNECTED[@]}"; do
     if [ "${CONNECTED[i]}" == "$MAIN" ] && [ "$LID_STATE" == "closed" ]; then
         echo "Lid closed, deactivating internal display."
         xrandr --output "$MAIN" --off
-        elif [ $i -eq 0 ]; then
+    elif [ $i -eq 0 ]; then
         echo "Activating ${CONNECTED[i]}"
         xrandr --output "${CONNECTED[i]}" --auto
     else
@@ -24,20 +24,3 @@ for i in "${!CONNECTED[@]}"; do
         xrandr --output "${CONNECTED[i]}" --auto --"$PLACEMENT" "${CONNECTED[i-1]}"
     fi
 done
-
-# #!/bin/sh
-
-# MAIN="LVDS-1"
-# LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
-# CONNECTED=$(xrandr -q | grep " connected" | cut -d ' ' -f1)
-
-# for m in $CONNECTED; do
-#     if [ "$m" == "$MAIN" ] && [ "$LID_STATE" == "closed" ]; then
-#         echo "Lid closed, deactivating internal display."
-#         xrandr --output "$MAIN" --off
-#     else
-#         echo "(De)activating $m"
-#         xrandr --output "$m" --off
-#         xrandr --output "$m" --auto
-#     fi
-# done

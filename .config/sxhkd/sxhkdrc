@@ -53,11 +53,47 @@ super + {_,shift + }{1-9,0}
 super + alt + {h,j,k,l}
 	wm_resize {left, up, down, right}
 
+super + m
+  desk=`bspc query -D -d focused`; \
+  bspc desktop -m next; \
+  bspc monitor -f next; \
+  bspc desktop -f $desk
+
+
+#--------------------
+# display setup scripts
+#--------------------
+
+super + { F9, F10, F11, F12 }
+	display-switch { left, ext, right, main }
+
+
+#--------------------
+# function keys
+#--------------------
+
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
+XF86AudioRaiseVolume
+	speaker-control sink "@DEFAULT_SINK@" up && polybar-msg hook speaker 1 &
+
+XF86AudioLowerVolume
+	speaker-control sink "@DEFAULT_SINK@" down && polybar-msg hook speaker 1 &
+
+XF86AudioMute
+	speaker-control sink "@DEFAULT_SINK@" toggle-mute && polybar-msg hook speaker 1 &
+
+XF86AudioMicMute
+	speaker-control source "@DEFAULT_SOURCE@" toggle-mute && polybar-msg hook microphone 1 &
+
 
 #--------------------
 # application shortcuts
 #--------------------
-
 
 # terminal emulator
 super + Return
@@ -67,8 +103,14 @@ super + Return
 super + @space
 	dmenu_run
 
+# browser
+super + b
+	$BROWSER
+
+super + c
+	$IDE
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
 
