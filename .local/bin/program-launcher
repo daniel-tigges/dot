@@ -1,0 +1,17 @@
+#!/bin/bash
+
+killall bspswallow
+
+rofi -show drun -config $HOME/.config/rofi/config.rasi
+
+# Hang until dmenu is closed
+while pidof dmenu; do continue
+done
+
+#If you frequently use dmenu_run without spawing a window commentout this while loop and uncomment the commented out part below
+bspc subscribe node_add | while read -r event; do
+bspswallow & exit
+done
+
+# sleep 2
+# bspswallow & exit

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#if [ "$2" != "PBTN" ]; then
+#    exit 0
+#fi
+
+export DISPLAY=:0
+#export XAUTHORITY=$XAUTHORITY
+ARR=()
+ARR+=("Shutdown")
+ARR+=("Reboot")
+ARR+=("Suspend")
+ARR+=("Exit")
+
+CHOICE="$(printf '%s\n' "${ARR[@]}" | rofi -dmenu -config $HOME/.config/rofi/power.rasi -p " Power")"
+
+if [ "$CHOICE" == "Shutdown" ]; then
+    systemctl shutdown
+else
+    if [ "$CHOICE" == "Suspend" ]; then
+        systemctl suspend
+    else
+        if [ "$CHOICE" == "Exit" ]; then
+            logout
+        else
+            if [ "$CHOICE" == "Reboot" ]; then
+                systemctl reboot
+            fi
+        fi
+    fi
+fi
