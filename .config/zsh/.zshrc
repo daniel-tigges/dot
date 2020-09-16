@@ -45,6 +45,8 @@ bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
+bindkey "^[[3~" delete-char
+
 
 function _set_cursor() {
     if [[ $TMUX = '' ]]; then
