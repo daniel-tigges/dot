@@ -82,8 +82,8 @@ KEYTIMEOUT=5
 
 # Misc
 setopt AUTO_CD # enable automatic cd into a directory
-setopt CORRECT # enable automatic correction
-setopt CORRECT_ALL # enable automatic correction
+#setopt CORRECT # enable automatic correction
+#setopt CORRECT_ALL # enable automatic correction
 stty stop undef # disable CTRL+S to freeze terminal
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
