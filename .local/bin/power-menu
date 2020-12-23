@@ -21,7 +21,7 @@ else
         systemctl suspend
     else
         if [ "$CHOICE" == "Exit" ]; then
-            logout
+            bspc quit
         else
             if [ "$CHOICE" == "Reboot" ]; then
                 systemctl reboot

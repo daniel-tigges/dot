@@ -13,5 +13,6 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "files.trimTrailingWhitespace": true,
     "workbench.sideBar.location": "left",
-    "window.zoomLevel": -1
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Dracula"
 }

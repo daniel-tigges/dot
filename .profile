@@ -2,7 +2,7 @@
 
 # The .profile is execute first after login in with a DM
 # (e.g. LightDM). It is also source from the $HOME/.zshenv file
-# to have these environment variables in a tty 
+# to have these environment variables in a tty
 
 # Set xdg variables
 export XDG_CONFIG_HOME="$HOME/.config"
