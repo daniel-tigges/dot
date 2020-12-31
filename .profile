@@ -53,3 +53,8 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export ERRFILE="$XDG_CACHE_HOME/xsession-errors"
+
+# dev variables
+PATH="$XDG_DATA_HOME/node_modules/bin:$PATH"
+export npm_config_prefix=$XDG_DATA_HOME/node_modules
+

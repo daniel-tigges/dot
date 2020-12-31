@@ -26,6 +26,18 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
 	bspc node -s {west,south,north,east} --follow
 
+# change stacking
+super + control + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Move current window to a pre-selected space
+super + control + m
+    bspc node -n last.!automatic
+
+# Rotate tree
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward}
+
 # focus the next/previous desktop in the current monitor
 control + alt + {Left,Right}
 	bspc desktop -f {prev,next}.local
@@ -122,4 +134,5 @@ super + g
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
 
