@@ -1,0 +1,20 @@
+#!/bin/sh
+
+default_desktop_id=10
+
+current_desktop=( $(xdotool get_desktop) )
+#echo "Current desktop: $current_desktop"
+
+window_id=( $(xdotool search --classname "Spotify" | head -n 1 ) )
+#echo "Spotify window: $window_id"
+
+current_desktop_spotify_id=( $(xdotool search --desktop $current_desktop --classname "Spotify" | head -n 1 ) )
+#echo "Spotify on current desktop: $current_desktop_spotify_id"
+
+if  [ -n "$current_desktop_spotify_id" ] && [ $current_desktop_spotify_id = $window_id ]; then
+    bspc node $window_id -g sticky=off -d $default_desktop_id -t tiled
+else
+    bspc node $window_id -d focused -f -t floating -g sticky=on
+fi
+
+

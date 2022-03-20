@@ -79,6 +79,8 @@ super + m
 super + { F9, F10, F11, F12 }
 	display-switch { left, ext, right, main }
 
+super + x
+	move_and_focus
 
 #--------------------
 # rofi
@@ -130,6 +132,9 @@ super + c
 
 super + g
 	galculator
+
+Print
+	flameshot gui
 
 # make sxhkd reload its configuration files:
 super + Escape

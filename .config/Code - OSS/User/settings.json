@@ -13,10 +13,27 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "files.trimTrailingWhitespace": true,
     "workbench.sideBar.location": "left",
-    "window.zoomLevel": 2,
     "workbench.colorTheme": "Dracula",
     "[javascript]": {
         "editor.tabSize": 2,
-        "editor.insertSpaces": true
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "redhat.telemetry.enabled": false,
+    "window.zoomLevel": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }

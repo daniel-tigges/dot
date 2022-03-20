@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MAIN="LVDS1"
+mapfile -t ENABLED_DISPLAYS < <(xrandr --listactivemonitors | tail -n +2 | awk '{print $4}')
+
+if [[ ${ENABLED_DISPLAYS[@]} =~ "${MAIN}" ]]; then
+    xrandr --output $MAIN --off
+else
+    xrandr --output $MAIN --auto
+fi
+

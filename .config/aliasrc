@@ -3,6 +3,7 @@
 alias dotfiles="/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME"
 alias dot="/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME"
 alias ls="ls -hN --color=auto --group-directories-first"
+alias lss="ls -hN --color=auto && du -h --max-depth 1"
 alias l="ls -hNl --color=auto --group-directories-first"
 alias ll="ls -hN -all --color=auto --group-directories-first"
 alias ..="cd .."
@@ -14,6 +15,9 @@ alias p="qpdfview"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias disable_webcam="sudo modprobe -r uvcvideo"
 alias enable_webcam="sudo modprobe uvcvideo"
+
+alias gauner-shuffle="mpv ~/temp/gauner-treff/slideshow --shuffle --image-display-duration=10 --osd-level=3 --osd-status-msg=\'\$\{filename\}\' --osd-font-size=20 --fs"
+alias gauner-slideshow="mpv ~/temp/gauner-treff/slideshow --image-display-duration=10 --osd-level=3 --osd-status-msg=\'\$\{filename\}\' --osd-font-size=20 --fs"
 
 alias v="nvim" nv="nvim" vim="nvim" vimdiff="nvim -d"
 

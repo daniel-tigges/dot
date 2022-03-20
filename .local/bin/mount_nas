@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo mount -t nfs 192.168.128.108:/Movies ~/NAS/Movies
+sudo mount -t nfs 192.168.128.108:/TV-Shows ~/NAS/TV-Shows
