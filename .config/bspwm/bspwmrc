@@ -4,7 +4,7 @@ bspc rule -r "*" # remove all rules first
 # Enable windwos swallowing
 pidof bspswallow || bspswallow &
 
-# Start polybar
+# Launch Polybar
 launch-polybar &
 
 # General Settings

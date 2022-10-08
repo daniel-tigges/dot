@@ -16,7 +16,7 @@ xset r rate 300 50 &
 wal -R
 
 # Set displays
-
+~/.config/screenlayout/dell_28inch.sh
 
 # Start programs
 lxpolkit &
